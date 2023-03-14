@@ -7,9 +7,9 @@ import { DetailedHTMLProps, forwardRef, InputHTMLAttributes } from "react"
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.black, 0.15),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.black, 0.25),
   },
   marginLeft: 0,
   width: '100%',
@@ -54,7 +54,7 @@ export const SearchField = forwardRef<
   >
 >(({ onChange, ...rest }, ref) => {
   return (
-    <div style={{ width: '40%', padding: 20 }}>
+    <div style={{ width: '90%', padding: 20 }}>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />

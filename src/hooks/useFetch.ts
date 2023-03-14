@@ -1,29 +1,24 @@
 import axios from 'axios'
-import { useCallback, useEffect, useMemo, useReducer } from 'react'
-import { UsersProps } from '../features/users'
+import { useEffect, useReducer } from 'react'
 
 interface State<T> {
   data?: T
-  loading?: boolean
+  loading: boolean
   error?: Error
-  search: string
 }
 type Action<T> =
   | { type: 'loading' }
   | { type: 'fetched'; payload: T }
   | { type: 'error'; payload: Error }
   | { type: 'finally' }
-  | { type: 'search'; payload: string }
 
 
 export function useFetch<T>(url: string, id?: string) {
 
   const initialState = {
     data: undefined,
-    datas: undefined,
     loading: true,
     error: undefined,
-    search: ''
   }
 
   const reducer = (state: State<T>, action: Action<T>) => {
@@ -36,8 +31,6 @@ export function useFetch<T>(url: string, id?: string) {
         return { ...initialState, error: action.payload }
       case 'finally':
         return { ...state, loading: false }
-      case 'search':
-        return { ...state, search: action.payload }
       default:
         return state
     }
@@ -50,22 +43,15 @@ export function useFetch<T>(url: string, id?: string) {
     let isCancelled = false
     dispatch({ type: 'loading' })
     if (!isCancelled) {
-      if (id) {
-        axios
-          .get(`${url}${id ? `${id}` : ''}`).then(res => dispatch({ type: 'fetched', payload: res.data }))
-          .catch(error => dispatch({ type: 'error', payload: error }))
-          .finally(() => dispatch({ type: 'finally' }))
-        return
-      }
       axios
-        .get(`${url}`).then(res => dispatch({ type: 'fetched', payload: res.data }))
+        .get(`${url}${id ? `/${id}` : ''}`).then(res => dispatch({ type: 'fetched', payload: res.data }))
         .catch(error => dispatch({ type: 'error', payload: error }))
         .finally(() => dispatch({ type: 'finally' }))
     }
     return () => {
       isCancelled = true
     }
-  }, [url])
+  }, [url, id])
 
 
 

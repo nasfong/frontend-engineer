@@ -7,9 +7,8 @@ import {
   Link as LinkIcon,
   OpenInNew as OpenInNewIcon,
 } from '@mui/icons-material'
-import { Box, Card, CardMedia, styled, Typography } from '@mui/material'
-import { Link } from 'react-router-dom'
-import { ProfileProps } from './profile.type'
+import { Box, Card, CardMedia, styled, Typography, Link } from '@mui/material'
+import { ProfileProps } from '../../profile/index'
 
 const TypoCustom = styled(Typography)({
   display: 'flex',
@@ -25,7 +24,7 @@ export const ProfileItem = ({ user }: { user?: ProfileProps }) => {
         <Box sx={{ lineHeight: '0.3', marginBottom: 10 }}>
           <Typography component="div" variant="h4" sx={{ '&:hover': { color: 'lightgreen' }, display: 'flex', justifyContent: 'space-between' }}>
             {user?.name && (
-              <Link to={`${user?.html_url}`} target="_blank" className='link' >
+              <Link href={user.html_url} target='_blank' sx={{ color: 'black', textDecoration: 'none' }}>
                 {user.name}  < OpenInNewIcon />
               </Link>
             )}
@@ -37,7 +36,7 @@ export const ProfileItem = ({ user }: { user?: ProfileProps }) => {
             />
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div" sx={{ display: 'flex', alignItems: 'center' }}>
-            <Link to={`${user?.html_url}`} target="_blank" className='link'>
+            <Link href={user?.html_url} target='_blank' sx={{ color: 'black', textDecoration: 'none' }}>
               {user?.login} {!user?.name && < OpenInNewIcon />}
             </Link>
           </Typography>
@@ -48,7 +47,7 @@ export const ProfileItem = ({ user }: { user?: ProfileProps }) => {
           </TypoCustom>
           {user?.company && (
             <TypoCustom variant="subtitle1">
-              <ApartmentIcon /> {user.company}
+              <ApartmentIcon /> {user?.company}
             </TypoCustom>
           )}
           {user?.blog && (

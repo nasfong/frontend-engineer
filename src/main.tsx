@@ -1,9 +1,10 @@
 import ReactDOM from 'react-dom/client'
 
 import './assets/styles/global.css'
-import App from './App'
 import { ThemeProvider } from '@mui/material'
-import { theme } from './components/theme'
+import { theme } from './components'
+
+import App from './App'
 
 //Axios
 import * as _setup from './config/Config'

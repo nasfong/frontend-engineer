@@ -1,7 +1,6 @@
 import { Container } from "@mui/material"
 import { ScrollTop } from "./components/ScrollTop"
 
-
 import { Footer } from "./Footer"
 import { Header } from "./Header"
 

@@ -1,8 +1,7 @@
 import { Box } from '@mui/material'
 import { Error } from '../components/Error'
 import { SearchField } from '../components/SearchField'
-import { LoadingUsers, UsersItem, UsersProps } from '../features/users'
-import { useSearch } from '../features/users/hooks/useSearch'
+import { LoadingUsers, UsersItem, UsersProps, useSearch } from '../features/users'
 import { useFetch } from '../hooks/useFetch'
 
 const page_api = '/users'
@@ -13,7 +12,7 @@ const Users = () => {
   const { search, setSearch } = useSearch(data)
 
   if (error) return <Error msg={error.message} />
-  
+
   return (
     <div>
       <SearchField onChange={(e) => setSearch(e.target.value)} />

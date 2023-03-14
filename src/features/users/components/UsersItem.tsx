@@ -11,6 +11,7 @@ import { PeopleAlt as PeopleAltIcon } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import { UsersProps } from './users.type'
 
+
 export const UsersItem = ({ user }: { user: UsersProps }) => {
   return (
     <Card sx={{ boxShadow: 5, minWidth: 350, borderRadius: 3 }} >

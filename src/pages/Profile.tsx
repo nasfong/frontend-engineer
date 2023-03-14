@@ -3,7 +3,7 @@ import { Error } from '../components/Error'
 import { LoadingPrfile, ProfileItem, ProfileProps, } from '../features/profile'
 import { useFetch } from '../hooks/useFetch'
 
-const page_api = '/users/'
+const page_api = '/users'
 
 const Profile = () => {
   const { id } = useParams()
