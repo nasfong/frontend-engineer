@@ -1,11 +1,18 @@
+import { Button, Link } from '@mui/material'
 import notfoundImage from '../assets/image/notfound.png'
 
 const Notfound = () => {
   return (
-    <div className='notfound'>
+    <section className='notfound'>
       <img src={notfoundImage} />
       <p>Page Not Found</p>
-    </div>
+
+      <Link href='/'>
+        <Button variant='contained' sx={{ paddingX: 5 }}>
+          Home
+        </Button>
+      </Link>
+    </section>
   )
 }
 

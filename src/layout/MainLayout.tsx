@@ -1,10 +1,9 @@
-import { Container } from "@mui/material"
-import { ScrollTop } from "./components/ScrollTop"
+import { Container } from '@mui/material'
+import { ScrollTop } from './components'
+import { Footer } from './Footer'
+import { Header } from './Header'
 
-import { Footer } from "./Footer"
-import { Header } from "./Header"
-
-export function MainLayout({ children }: { children: React.ReactNode }) {
+export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <ScrollTop>
       <Header />

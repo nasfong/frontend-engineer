@@ -1,19 +1,32 @@
-import { Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import Routes from './routes/Routes'
-import Loading from './components/Loading'
-import { MainLayout } from './layout/MainLayout'
+import MainLayout from './layout/MainLayout'
+import { useMode } from './config/Theme'
 
 function App() {
+  const { mode } = useMode()
+
+  const theme = createTheme({
+    palette: {
+      mode: mode ? 'dark' : 'light',
+      primary: {
+        main: '#1976d2',
+      },
+      common: {
+        white: '#1976d2'
+      }
+    }
+  })
   return (
-    <Suspense fallback={<Loading />}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <MainLayout>
           <Routes />
         </MainLayout>
-      </BrowserRouter>
-    </Suspense>
+      </ThemeProvider>
+    </BrowserRouter >
   )
 }
 

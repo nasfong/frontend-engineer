@@ -1,14 +1,10 @@
-import React from 'react'
-
-const Loading = () => {
+export default function Loading() {
   return (
-    <div className='loading'>
-      <img 
-      src='/logo.png'
+    <section className='loading'>
+      <img
+        src='/logo.png'
       />
-      <span className="loader"></span>
-    </div>
+      <span className='loader' />
+    </section>
   )
 }
-
-export default Loading

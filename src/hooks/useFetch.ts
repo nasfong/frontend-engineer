@@ -53,7 +53,5 @@ export function useFetch<T>(url: string, id?: string) {
     }
   }, [url, id])
 
-
-
   return { data, loading, error }
 }

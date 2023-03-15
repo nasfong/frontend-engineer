@@ -1,21 +1,21 @@
-.notfound {
+.error {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.notfound img {
-  height: 100%;
-  width: 100%;
+.error img {
+  height: 500px;
+  width: 500px;
 }
 
-.notfound p {
+.error p {
   font-size: 3rem;
   color: #cecfd4;
   margin: 0;
 }
 
-.notfound a {
+.error a {
   font-size: 3rem;
 }

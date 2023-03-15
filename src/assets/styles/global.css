@@ -1,5 +1,6 @@
 @import "./loading.css";
 @import "./notfound.css";
+@import "./error.css";
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -17,7 +18,7 @@
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
 
-  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
   height: 100vh;
 }
 

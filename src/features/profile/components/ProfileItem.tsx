@@ -7,7 +7,7 @@ import {
   Link as LinkIcon,
   OpenInNew as OpenInNewIcon,
 } from '@mui/icons-material'
-import { Box, Card, CardMedia, styled, Typography, Link } from '@mui/material'
+import { Box, Card, CardMedia, styled, Typography, Link, useTheme } from '@mui/material'
 import { ProfileProps } from '../../profile/index'
 
 const TypoCustom = styled(Typography)({
@@ -18,65 +18,66 @@ const TypoCustom = styled(Typography)({
 })
 
 export const ProfileItem = ({ user }: { user?: ProfileProps }) => {
+  const { palette } = useTheme()
   return (
     <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, justifyContent: 'space-evenly', minHeight: 500 }}>
       <Card sx={{ borderRadius: '16px', boxShadow: 5, padding: 5, minWidth: { xs: 300, md: 500 } }}>
         <Box sx={{ lineHeight: '0.3', marginBottom: 10 }}>
-          <Typography component="div" variant="h4" sx={{ '&:hover': { color: 'lightgreen' }, display: 'flex', justifyContent: 'space-between' }}>
+          <Typography component='div' variant='h4' sx={{ display: 'flex', justifyContent: 'space-between' }}>
             {user?.name && (
-              <Link href={user.html_url} target='_blank' sx={{ color: 'black', textDecoration: 'none' }}>
+              <Link href={user.html_url} target='_blank' sx={{ '&:hover': { color: 'lightgreen' }, color: palette.text.primary, textDecoration: 'none' }}>
                 {user.name}  < OpenInNewIcon />
               </Link>
             )}
             <CardMedia
-              component="img"
+              component='img'
               sx={{ height: 100, width: 100, borderRadius: '50%', display: { xs: 'block', md: 'none' } }}
               image={user?.avatar_url}
-              alt="Live from space album cover"
+              alt='Live from space album cover'
             />
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div" sx={{ display: 'flex', alignItems: 'center' }}>
-            <Link href={user?.html_url} target='_blank' sx={{ color: 'black', textDecoration: 'none' }}>
+          <Typography variant='subtitle1' color='text.secondary' component='div' sx={{ display: 'flex', alignItems: 'center' }}>
+            <Link href={user?.html_url} target='_blank' sx={{ '&:hover': { color: 'lightgreen' }, color: palette.text.primary, textDecoration: 'none' }}>
               {user?.login} {!user?.name && < OpenInNewIcon />}
             </Link>
           </Typography>
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-          <TypoCustom variant="subtitle1">
+          <TypoCustom variant='subtitle1'>
             <PeopleAltIcon />{user?.followers} Follower ~ {user?.following} Following
           </TypoCustom>
           {user?.company && (
-            <TypoCustom variant="subtitle1">
+            <TypoCustom variant='subtitle1'>
               <ApartmentIcon /> {user?.company}
             </TypoCustom>
           )}
           {user?.blog && (
-            <TypoCustom variant="subtitle1">
+            <TypoCustom variant='subtitle1'>
               <SettingsEthernetIcon /> {user.blog}
             </TypoCustom>
           )}
           {user?.location && (
-            <TypoCustom variant="subtitle1">
+            <TypoCustom variant='subtitle1'>
               <LocationOnIcon /> {user.location}
             </TypoCustom>
           )}
           {user?.twitter_username && (
-            <TypoCustom variant="subtitle1">
+            <TypoCustom variant='subtitle1'>
               <TwitterIcon /> {user.twitter_username}
             </TypoCustom>
           )}
           {user?.html_url && (
-            <TypoCustom variant="subtitle1">
+            <TypoCustom variant='subtitle1'>
               <LinkIcon />{user.html_url}
             </TypoCustom>
           )}
         </Box>
       </Card>
       <CardMedia
-        component="img"
+        component='img'
         sx={{ height: 200, width: 200, borderRadius: '50%', display: { xs: 'none', md: 'block' } }}
         image={user?.avatar_url}
-        alt="Live from space album cover"
+        alt='Live from space album cover'
       />
     </Box>
   )

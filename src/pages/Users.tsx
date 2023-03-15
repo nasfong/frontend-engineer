@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
 import { Error } from '../components/Error'
+import { ForwordRef } from '../components/Forward'
 import { SearchField } from '../components/SearchField'
 import { LoadingUsers, UsersItem, UsersProps, useSearch } from '../features/users'
 import { useFetch } from '../hooks/useFetch'
@@ -14,24 +15,25 @@ const Users = () => {
   if (error) return <Error msg={error.message} />
 
   return (
-    <div>
+    <>
+      <ForwordRef />
       <SearchField onChange={(e) => setSearch(e.target.value)} />
       {loading ? (
         <LoadingUsers />
       ) : (
         <Box
-          display="flex"
-          flexDirection="row"
-          justifyContent="center"
-          flexWrap="wrap"
+          display='flex'
+          flexDirection='row'
+          justifyContent='center'
+          alignItems='center'
+          flexWrap='wrap'
           gap={2}
         >
           {/* 20 Users only */}
           {search?.slice(0, 20).map(user => <UsersItem key={user.id} user={user} />)}
         </Box>
       )}
-
-    </div>
+    </>
   )
 }
 
