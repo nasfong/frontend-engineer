@@ -3,6 +3,8 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import Routes from './routes/Routes'
 import MainLayout from './layout/MainLayout'
 import { useMode } from './config/Theme'
+import { Suspense } from 'react'
+import Loading from './components/Loading'
 
 function App() {
   const { mode } = useMode()
@@ -19,14 +21,17 @@ function App() {
     }
   })
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <MainLayout>
-          <Routes />
-        </MainLayout>
-      </ThemeProvider>
-    </BrowserRouter >
+    <Suspense fallback={<Loading />}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <MainLayout>
+            <Routes />
+          </MainLayout>
+        </ThemeProvider>
+      </BrowserRouter >
+    </Suspense>
+
   )
 }
 

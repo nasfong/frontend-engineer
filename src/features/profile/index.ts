@@ -1,3 +1,6 @@
 export * from './components/LoadingPrfile'
 export * from './components/profile.type'
 export * from './components/ProfileItem'
+export * from './modal/ModalProfile'
+export * from './modal/LoadingFollow'
+export * from './modal/FollowItem'

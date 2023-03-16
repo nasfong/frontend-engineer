@@ -1,6 +1,12 @@
 import { useParams } from 'react-router-dom'
 import { Error } from '../components/Error'
-import { LoadingPrfile, ProfileItem, ProfileProps, } from '../features/profile'
+import {
+  LoadingPrfile as Loading,
+  ProfileItem as Item,
+  ModalProfile as Modal,
+  ProfileProps,
+} from '../features/profile'
+import { useFollow } from '../features/profile/hooks/useFollow'
 import { useFetch } from '../hooks/useFetch'
 
 const page_api = '/users'
@@ -9,9 +15,16 @@ const Profile = () => {
   const { id } = useParams()
   const { data, loading, error } = useFetch<ProfileProps>(page_api, id)
 
+  const { handleFollow, ...rest } = useFollow()
+
   if (error) return <Error msg={error.message} />
 
-  return loading ? <LoadingPrfile /> : <ProfileItem user={data} />
+  return (
+    <>
+      {loading ? <Loading /> : <Item user={data} handleFollow={handleFollow} />}
+      <Modal {...rest} />
+    </>
+  )
 }
 
 export default Profile

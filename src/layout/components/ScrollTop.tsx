@@ -1,5 +1,5 @@
 import ScrollToTop from 'react-scroll-up'
-import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp'
+import { KeyboardDoubleArrowUp as KeyboardDoubleArrowUpIcon } from '@mui/icons-material'
 import { Button } from '@mui/material'
 
 export function ScrollTop({ children }: { children: React.ReactNode }) {

@@ -13,18 +13,18 @@ type Action<T> =
   | { type: 'finally' }
 
 
-export function useFetch<T>(url: string, id?: string) {
+export function useFetch<T>(url: string | URL, id = '') {
 
   const initialState = {
     data: undefined,
-    loading: true,
+    loading: false,
     error: undefined,
   }
 
   const reducer = (state: State<T>, action: Action<T>) => {
     switch (action.type) {
       case 'loading':
-        return { ...initialState }
+        return { ...initialState, loading: true }
       case 'fetched':
         return { ...initialState, data: action.payload }
       case 'error':
@@ -44,7 +44,7 @@ export function useFetch<T>(url: string, id?: string) {
     dispatch({ type: 'loading' })
     if (!isCancelled) {
       axios
-        .get(`${url}${id ? `/${id}` : ''}`).then(res => dispatch({ type: 'fetched', payload: res.data }))
+        .get(`${url}${id ? `/${id}` : id} `).then(res => dispatch({ type: 'fetched', payload: res.data }))
         .catch(error => dispatch({ type: 'error', payload: error }))
         .finally(() => dispatch({ type: 'finally' }))
     }

@@ -1,10 +1,12 @@
 export default function Loading() {
   return (
-    <section className='loading'>
-      <img
+    <div className='loading'>
+      {/* <img
         src='/logo.png'
-      />
-      <span className='loader' />
-    </section>
+      /> */}
+      <div className="ring">Loading
+        <span></span>
+      </div>
+    </div>
   )
 }

@@ -14,10 +14,9 @@ _setup.setupAxios(axios)
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Suspense fallback={<Loading />}>
       <DataProvider>
         <App />
       </DataProvider>
-    </Suspense>
+    {/* </Suspense> */}
   </React.StrictMode>,
 )

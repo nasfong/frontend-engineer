@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useMemo } from 'react'
+import { useCallback, useLayoutEffect } from 'react'
 import { SwitchMode } from '../../components/SwitchMode'
 import { useMode } from '../../config/Theme'
 import { useLocalStorage } from '../../hooks/useLocalStorage'

@@ -7,8 +7,8 @@ import {
   Link as LinkIcon,
   OpenInNew as OpenInNewIcon,
 } from '@mui/icons-material'
-import { Box, Card, CardMedia, styled, Typography, Link, useTheme } from '@mui/material'
-import { ProfileProps } from '../../profile/index'
+import { Box, Card, CardMedia, styled, Typography, Link, useTheme, Button } from '@mui/material'
+import { ProfileProps } from './profile.type'
 
 const TypoCustom = styled(Typography)({
   display: 'flex',
@@ -17,7 +17,12 @@ const TypoCustom = styled(Typography)({
   columnGap: 5
 })
 
-export const ProfileItem = ({ user }: { user?: ProfileProps }) => {
+type ProfileItemProps = {
+  user?: ProfileProps
+  handleFollow: (url?: URL) => void
+}
+
+export const ProfileItem = ({ user, handleFollow }: ProfileItemProps) => {
   const { palette } = useTheme()
   return (
     <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', md: 'row' }, justifyContent: 'space-evenly', minHeight: 500 }}>
@@ -44,7 +49,12 @@ export const ProfileItem = ({ user }: { user?: ProfileProps }) => {
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
           <TypoCustom variant='subtitle1'>
-            <PeopleAltIcon />{user?.followers} Follower ~ {user?.following} Following
+            <PeopleAltIcon />
+            <Button color='inherit' onClick={() => handleFollow(user?.followers_url)}>
+              {user?.followers} Follower
+            </Button> ~ <Button color='inherit' onClick={() => handleFollow(user?.following_url)}>
+              {user?.following} Following
+            </Button>
           </TypoCustom>
           {user?.company && (
             <TypoCustom variant='subtitle1'>
