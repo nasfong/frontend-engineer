@@ -1,5 +1,5 @@
 import axios, { Canceler } from 'axios'
-import { useCallback, useReducer, useRef, useState } from 'react'
+import { MutableRefObject, RefObject, useCallback, useReducer, useRef, useState } from 'react'
 import { FollowProps, UseFollowProps } from '../components/profile.type'
 
 type State = {
@@ -15,6 +15,7 @@ type Action =
   | { type: 'open', payload: URL | string }
   | { type: 'fetched'; payload: FollowProps[] }
   | { type: 'error'; payload: Error }
+  | { type: 'stop' }
   | { type: 'finally' }
   | { type: 'close' }
 
@@ -46,6 +47,10 @@ export const useFollow = (): UseFollowProps => {
             showModal: true,
             page: state.page + 1
           }
+        case 'stop':
+          return {
+            ...state, page: 0
+          }
         case 'error':
           return {
             ...initialState,
@@ -53,15 +58,15 @@ export const useFollow = (): UseFollowProps => {
             showModal: false,
           }
         case 'finally':
-          return { ...state, loading: false, showModal: true }
+          return { ...state, loading: false }
         case 'close':
-          return { ...state, showModal: false, error: undefined }
+          return { ...initialState }
         default:
           return state
       }
     }, initialState)
 
-  const observer = useRef() as any
+  const observer = useRef() as MutableRefObject<any>
 
   const handleFollow = useCallback(async (url?: URL | string) => {
     let isCancelled = false
@@ -72,9 +77,11 @@ export const useFollow = (): UseFollowProps => {
         .get(`${url}`, {
           params: { page: page },
           cancelToken: new axios.CancelToken(c => cancel = c)
-        }).then((res) => {
+        }).then(res => res.data.length ?
           dispatch({ type: 'fetched', payload: res.data })
-        })
+          :
+          dispatch({ type: 'stop' })
+        )
         .catch(error => {
           if (axios.isCancel(error)) return
           dispatch({ type: 'error', payload: error })
@@ -89,11 +96,11 @@ export const useFollow = (): UseFollowProps => {
 
   const handleClose = useCallback(() => dispatch({ type: 'close' }), [])
 
-  const pageRef = useCallback((node: any) => {
+  const pageRef = useCallback((node: RefObject<HTMLInputElement>) => {
     if (loading) return
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(async (entries) => {
-      if (entries[0].isIntersecting) {
+      if (entries[0].isIntersecting && page && follows.length >= 30) {
         handleFollow(url)
       }
     })

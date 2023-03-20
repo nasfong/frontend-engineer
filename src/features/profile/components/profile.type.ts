@@ -27,7 +27,7 @@ export type ModalProfileProps = {
 }
 
 export type UseFollowProps = ModalProfileProps & {
-  handleFollow: (url?: URL) => void
+  handleFollow: (url?: URL | string) => void
 }
 
 

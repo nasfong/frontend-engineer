@@ -1,22 +1,17 @@
+import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './assets/styles/global.css'
 
 //App
 import App from './App'
-import Loading from './components/Loading'
+import './assets/styles/global.css'
 
 //Axios
-import * as _setup from './config/Config'
+import * as _setup from './config/config'
 import axios from 'axios'
-import React, { Suspense } from 'react'
-import { DataProvider } from './config/Theme'
 _setup.setupAxios(axios)
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-      <DataProvider>
-        <App />
-      </DataProvider>
-    {/* </Suspense> */}
+    <App basename={_setup.config.basename} />
   </React.StrictMode>,
 )

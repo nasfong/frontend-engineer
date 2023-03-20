@@ -1,24 +1,24 @@
 import { useCallback, useLayoutEffect } from 'react'
-import { SwitchMode } from '../../components/SwitchMode'
-import { useMode } from '../../config/Theme'
+import { PaletteMode } from '@mui/material'
+import { SwitchModeInput } from '../../components/SwitchModeInput'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { useToggleTheme } from '../../hooks/useToggleTheme'
 
-export const SwitchTheme = () => {
-  const { dispatch } = useMode()
-  const [mode, setMode] = useLocalStorage<boolean>('mode', false)
+export function SwitchTheme() {
+  const { dispatch } = useToggleTheme()
+  const [mode, setMode] = useLocalStorage<PaletteMode>('mode', 'light')
 
   useLayoutEffect(() => {
     dispatch({ type: 'mode', payload: mode })
-  }, [])
+  }, [mode])
 
   const handleMode = useCallback(() => {
-    setMode(!mode)
-    dispatch({ type: 'mode', payload: !mode })
+    setMode(mode === 'dark' ? 'light' : 'dark')
   }, [mode])
 
 
   return (
-    <SwitchMode onChange={handleMode} checked={mode} />
+    <SwitchModeInput onChange={handleMode} checked={mode === 'light' ? false : true} />
   )
 }
 

@@ -1,17 +1,31 @@
-import { Container } from '@mui/material'
+import { Container, createTheme, CssBaseline, ThemeProvider } from '@mui/material'
+import { useMemo } from 'react'
+import { Outlet } from 'react-router-dom'
+import { getDesignTokens } from '../config/config'
+import { useToggleTheme } from '../hooks/useToggleTheme'
 import { ScrollTop } from './components'
 import { Footer } from './Footer'
 import { Header } from './Header'
+import { Sidebar } from './Sidebar'
 
-export default function MainLayout({ children }: { children: React.ReactNode }) {
+export default function MainLayout() {
+  const { mode } = useToggleTheme()
+
+  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode])
   return (
-    <ScrollTop>
-      <Header />
-      <Container sx={{ paddingY: 10 }}>
-        {children}
-      </Container>
-      <Footer />
-    </ScrollTop>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ScrollTop>
+        <Header />
+        <Sidebar />
+        <Container sx={{ paddingY: 10 }}>
+          <Outlet />
+        </Container>
+        <Footer />
+      </ScrollTop>
+    </ThemeProvider>
+
+
   )
 }
 

@@ -1,5 +1,5 @@
 # frontend-engineer
-The whole project focus on typescript guidline(clean code)
+The whole project focus on typescript guideline(clean code)
 _Typescript guidline
 _Material ui
 _React (vite)

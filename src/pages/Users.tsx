@@ -11,11 +11,11 @@ import { useFetch } from '../hooks/useFetch'
 
 const page_api = '/users'
 
-const Users = () => {
+function Users() {
 
   const { data, loading, error } = useFetch<UsersProps[]>(page_api)
   const { search, setSearch } = useSearch(data)
-  
+
   if (error) return <Error msg={error.message} />
 
   return (

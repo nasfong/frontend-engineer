@@ -11,7 +11,7 @@ import { useFetch } from '../hooks/useFetch'
 
 const page_api = '/users'
 
-const Profile = () => {
+function Profile() {
   const { id } = useParams()
   const { data, loading, error } = useFetch<ProfileProps>(page_api, id)
 

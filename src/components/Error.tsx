@@ -1,4 +1,4 @@
-import { Alert, Button, Link, Snackbar, Stack } from '@mui/material'
+import { Alert, Button, CardMedia, Link, Snackbar, Stack } from '@mui/material'
 import { useState } from 'react'
 import ErrorImage from '../assets/image/error.png'
 
@@ -7,8 +7,10 @@ export function Error({ msg }: { msg: string }) {
   const handleClose = () => setOpen(!open)
   return (
     <section className='error'>
-      <img
-        src={ErrorImage}
+      <CardMedia
+        component='img'
+        image={ErrorImage}
+        alt='Live from space album cover'
       />
       <p>Something Went Wrong!</p>
       <Link href='/'>

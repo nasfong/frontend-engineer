@@ -19,7 +19,7 @@ const style = {
 export const ModalProfile = ({ follows, showModal, loading, error, handleClose, pageRef }: ModalProfileProps) => {
 
   if (error) return <Error msg={error.message} />
-  console.log(follows)
+  // console.log(follows)
   return (
     <Modal
       open={showModal}

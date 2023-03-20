@@ -48,7 +48,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }))
 
-export const SwitchMode = forwardRef<
+export const SwitchModeInput = forwardRef<
   HTMLInputElement,
   DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>, HTMLInputElement
