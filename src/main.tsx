@@ -6,7 +6,7 @@ import App from './App'
 import './assets/styles/global.css'
 
 //Axios
-import * as _setup from './config/config'
+import * as _setup from './config/configs'
 import axios from 'axios'
 _setup.setupAxios(axios)
 

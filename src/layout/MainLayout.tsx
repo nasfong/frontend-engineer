@@ -1,7 +1,7 @@
 import { Container, createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { useMemo } from 'react'
 import { Outlet } from 'react-router-dom'
-import { getDesignTokens } from '../config/config'
+import { getDesignTokens } from '../config/configs'
 import { useToggleTheme } from '../hooks/useToggleTheme'
 import { ScrollTop } from './components'
 import { Footer } from './Footer'
