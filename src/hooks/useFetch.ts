@@ -44,7 +44,8 @@ export function useFetch<T>(url: string | URL, id = '') {
     dispatch({ type: 'loading' })
     if (!isCancelled) {
       axios
-        .get(`${url}${id ? `/${id}` : id} `).then(res => dispatch({ type: 'fetched', payload: res.data }))
+        .get(`${url}${id ? `/${id}` : id}`, { params: { per_page: 100 } })
+        .then(res => dispatch({ type: 'fetched', payload: res.data }))
         .catch(error => dispatch({ type: 'error', payload: error }))
         .finally(() => dispatch({ type: 'finally' }))
     }

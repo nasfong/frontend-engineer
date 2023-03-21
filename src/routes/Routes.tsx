@@ -11,11 +11,11 @@ const MainRoutes: RouteObject = {
   element: <MainLayout />,
   children: [
     {
-      path: '/',
+      path: '',
       element: <Users />
     },
     {
-      path: '/:id',
+      path: ':id',
       element: <Profile />
     },
 
@@ -31,6 +31,6 @@ const MainRoutes: RouteObject = {
   ]
 }
 
-const Routes = () => useRoutes([MainRoutes])
-
-export default Routes
+export default function Routes() {
+  return useRoutes([MainRoutes])
+}

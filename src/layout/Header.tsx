@@ -7,12 +7,12 @@ import LogoImage from '/logo.png'
 import { useToggleTheme } from '../hooks/useToggleTheme'
 
 export function Header() {
-  const { dispatch } = useToggleTheme()
+  const { menu, dispatch } = useToggleTheme()
   const [open, setOpen] = useState(false)
 
   const handleDrawerOpen = () => {
     setOpen(!open)
-    dispatch({ type: 'menu', payload: !open })
+    dispatch({ type: 'menu', payload: !menu })
   }
 
   return (

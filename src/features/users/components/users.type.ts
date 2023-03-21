@@ -20,3 +20,8 @@ export type UsersProps = {
   url: string
 }
 
+export type UserItemProps = {
+  user: UsersProps
+  pageRef?: (node: any) => void
+}
+

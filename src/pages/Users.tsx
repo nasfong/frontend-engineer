@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import { Error } from '../components/Error'
 import { SearchField } from '../components/SearchField'
 import {
@@ -14,29 +14,18 @@ const page_api = '/users'
 function Users() {
 
   const { data, loading, error } = useFetch<UsersProps[]>(page_api)
-  const { search, setSearch } = useSearch(data)
-
+  const [search, setSearch] = useSearch(data)
+  
   if (error) return <Error msg={error.message} />
 
   return (
-    <>
+    <Box display='flex' flexDirection='column' alignItems='start'>
       <SearchField onChange={(e) => setSearch(e.target.value)} />
-      {loading ? (
-        <Loading />
-      ) : (
-        <Box
-          display='flex'
-          flexDirection='row'
-          justifyContent='center'
-          alignItems='center'
-          flexWrap='wrap'
-          gap={2}
-        >
-          {/* 20 Users only */}
-          {search?.slice(0, 20).map(user => <Item key={user.id} user={user} />)}
-        </Box>
-      )}
-    </>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 6, md: 9, xl: 12 }}>
+        {search.map(user => <Item key={user.id} user={user} />)}
+        {loading && <Loading />}
+      </Grid>
+    </Box>
   )
 }
 

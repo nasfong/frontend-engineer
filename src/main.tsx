@@ -11,7 +11,5 @@ import axios from 'axios'
 _setup.setupAxios(axios)
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
     <App basename={_setup.config.basename} />
-  </React.StrictMode>,
 )
