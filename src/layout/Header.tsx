@@ -30,7 +30,7 @@ export function Header() {
         <Link to='/'>
           <CardMedia
             component='img'
-            sx={{ height: 50 }}
+            sx={{ maxHeight: 50 }}
             image={LogoImage}
             alt='Live from space album cover'
           />

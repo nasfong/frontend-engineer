@@ -22,6 +22,5 @@ export type UsersProps = {
 
 export type UserItemProps = {
   user: UsersProps
-  pageRef?: (node: any) => void
 }
 

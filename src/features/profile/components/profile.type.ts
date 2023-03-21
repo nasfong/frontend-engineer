@@ -23,7 +23,7 @@ export type ModalProfileProps = {
   loading: boolean
   error?: Error
   handleClose: () => void
-  pageRef: (node: any) => void
+  pageRef: (node: Element) => void
 }
 
 export type UseFollowProps = ModalProfileProps & {

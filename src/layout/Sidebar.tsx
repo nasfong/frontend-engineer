@@ -4,7 +4,7 @@ import { useToggleTheme } from '../hooks/useToggleTheme'
 
 export function Sidebar() {
   const { menu, dispatch } = useToggleTheme()
-  const matches = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
+  const md = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
   const handleClose = useCallback(() => {
     dispatch({ type: 'menu', payload: false })
@@ -15,10 +15,10 @@ export function Sidebar() {
       anchor='left'
       open={menu}
       onClose={handleClose}
-      variant={matches ? 'persistent' : 'temporary'}
+      variant={md ? 'persistent' : 'temporary'}
       sx={{
         '& .MuiDrawer-paper': {
-          top: matches ? '64px' : '0'
+          top: md ? '64px' : '0'
         }
       }}
     >

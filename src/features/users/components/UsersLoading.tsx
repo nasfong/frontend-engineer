@@ -1,6 +1,6 @@
 import { Box, Card, CardActions, CardContent, Skeleton } from '@mui/material'
 
-export const LoadingUsers = () => {
+export const UsersLoading = () => {
   return (
     <Card sx={{ boxShadow: 1, width: 350, height: 160, margin: 2, borderRadius: 3 }} >
       <CardContent sx={{ display: 'flex', columnGap: 2 }}>

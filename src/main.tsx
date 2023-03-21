@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 
 //App
 import App from './App'
-import './assets/styles/global.css'
+import './assets/styles/global.scss'
 
 //Axios
 import * as _setup from './config/configs'

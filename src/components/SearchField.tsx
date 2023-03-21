@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material'
+import { Box, InputProps, styled } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
 import SearchIcon from '@mui/icons-material/Search'
@@ -47,12 +47,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-export const SearchField = forwardRef<
-  HTMLInputElement,
-  DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>, HTMLInputElement
-  >
->(({ onChange, ...rest }, ref) => {
+export const SearchField = forwardRef<unknown, Omit<InputProps, 'to'>>(({ ...rest }, ref) => {
   return (
     <div style={{ padding: 20 }}>
       <Search>
@@ -62,8 +57,7 @@ export const SearchField = forwardRef<
         <StyledInputBase
           placeholder='Search…'
           inputProps={{ 'aria-label': 'search' }}
-          onChange={onChange}
-          // {...rest}
+          {...rest}
           ref={ref}
         />
       </Search>

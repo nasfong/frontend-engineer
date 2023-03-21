@@ -1,21 +1,22 @@
 import { CardMedia, Link, Paper, Typography } from '@mui/material'
+import { LegacyRef } from 'react'
 import { FollowProps } from '../components/profile.type'
 
 type FollowItem = {
   follow: FollowProps
-  pageRef?: (node: any) => void
+  pageRef?: (node: Element | any) => void
 }
 
 export const FollowItem = ({ follow, pageRef }: FollowItem) => {
   return (
     <Link
       href={`/${follow.login}`}
-      ref={pageRef}
       display='flex'
       justifyContent='start'
       alignItems='center'
       columnGap={2}
       sx={{ textDecoration: 'none' }}
+      ref={pageRef}
     >
       <Paper elevation={3} sx={{ width: 50, height: 50, borderRadius: '50%' }}>
         <CardMedia

@@ -1,6 +1,6 @@
 import { Box, Card, Skeleton } from '@mui/material'
 
-export const LoadingPrfile = () => {
+export const ProfileLoading = () => {
   return (
     <Box display='flex' flexDirection={{ xs: 'column-reverse', md: 'row' }} justifyContent='space-evenly' minHeight={500}>
       <Card sx={{ borderRadius: '16px', boxShadow: 5, padding: 5, minWidth: { xs: 300, md: 500 } }}>

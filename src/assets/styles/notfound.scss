@@ -1,0 +1,21 @@
+.notfound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+
+  p {
+    font-size: 3rem;
+    color: #cecfd4;
+    margin: 0;
+  }
+
+  a {
+    font-size: 3rem;
+  }
+}

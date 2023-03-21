@@ -66,7 +66,7 @@ export const useFollow = (): UseFollowProps => {
       }
     }, initialState)
 
-  const observer = useRef() as MutableRefObject<any>
+  const observer = useRef(null) as MutableRefObject<IntersectionObserver | null>
 
   const handleFollow = useCallback(async (url?: URL | string) => {
     let isCancelled = false
@@ -96,7 +96,7 @@ export const useFollow = (): UseFollowProps => {
 
   const handleClose = useCallback(() => dispatch({ type: 'close' }), [])
 
-  const pageRef = useCallback((node: RefObject<HTMLInputElement>) => {
+  const pageRef = useCallback((node: Element) => {
     if (loading) return
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(async (entries) => {

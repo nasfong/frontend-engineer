@@ -1,21 +1,21 @@
-import { Button, CardMedia, Link } from '@mui/material'
+import { Box, Button, CardMedia, Link } from '@mui/material'
 import notfoundImage from '../assets/image/notfound.png'
 
-const Notfound = () => {
+function Notfound() {
   return (
-    <section className='notfound'>
+    <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
       <CardMedia
         component='img'
         image={notfoundImage}
         alt='Live from space album cover'
       />
-      <p>Page Not Found</p>
+      <Box fontSize={30} color='gray'>Page Not Found</Box>
       <Link href='/'>
         <Button variant='contained' sx={{ paddingX: 5 }}>
           Home
         </Button>
       </Link>
-    </section>
+    </Box>
   )
 }
 

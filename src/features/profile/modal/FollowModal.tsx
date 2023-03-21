@@ -1,8 +1,8 @@
-import { Box, Modal, Paper, Typography } from '@mui/material'
+import { Modal, Paper } from '@mui/material'
 import { Error } from '../../../components'
 import { ModalProfileProps } from '../components/profile.type'
 import { FollowItem as Item } from './FollowItem'
-import { LoadingFollow as Loading } from './LoadingFollow'
+import { LoadingFollow as Loading } from './FollowLoading'
 
 const style = {
   position: 'absolute',
@@ -19,7 +19,7 @@ const style = {
   overflow: 'auto',
 }
 
-export const ModalProfile = ({ follows, showModal, loading, error, handleClose, pageRef }: ModalProfileProps) => {
+export const ProfileModal = ({ follows, showModal, loading, error, handleClose, pageRef }: ModalProfileProps) => {
 
   if (error) return <Error msg={error.message} />
 

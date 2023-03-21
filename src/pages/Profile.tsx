@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom'
 import { Error } from '../components/Error'
 import {
-  LoadingPrfile as Loading,
+  ProfileLoading as Loading,
   ProfileItem as Item,
-  ModalProfile as Modal,
+  ProfileModal as Modal,
   ProfileProps,
 } from '../features/profile'
 import { useFollow } from '../features/profile/hooks/useFollow'

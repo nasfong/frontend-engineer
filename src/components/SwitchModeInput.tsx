@@ -1,8 +1,7 @@
-import { FormControlLabel, styled, Switch } from "@mui/material"
-import { DetailedHTMLProps, forwardRef, InputHTMLAttributes } from "react"
+import { FormControlLabel, styled, Switch, SwitchProps } from '@mui/material'
+import { forwardRef } from 'react'
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-  width: 62,
+const InputSwitch = styled(Switch)(({ theme }) => ({
   height: 34,
   padding: 7,
   '& .MuiSwitch-switchBase': {
@@ -48,15 +47,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }))
 
-export const SwitchModeInput = forwardRef<
-  HTMLInputElement,
-  DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>, HTMLInputElement
-  >
->(({ onChange, checked, ...rest }, ref) => {
+export const SwitchModeInput = forwardRef<HTMLButtonElement, Omit<SwitchProps, 'to'>>(({ ...rest }, ref) => {
   return (
     <FormControlLabel
-      control={<MaterialUISwitch sx={{ m: 1 }} onChange={onChange} checked={checked} />}
+      control={<InputSwitch {...rest} ref={ref} />}
       label=""
     />
   )
