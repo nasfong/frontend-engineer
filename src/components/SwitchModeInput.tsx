@@ -1,4 +1,4 @@
-import { FormControlLabel, styled, Switch, SwitchProps } from '@mui/material'
+import { styled, Switch, SwitchProps } from '@mui/material'
 import { forwardRef } from 'react'
 
 const InputSwitch = styled(Switch)(({ theme }) => ({
@@ -49,9 +49,6 @@ const InputSwitch = styled(Switch)(({ theme }) => ({
 
 export const SwitchModeInput = forwardRef<HTMLButtonElement, Omit<SwitchProps, 'to'>>(({ ...rest }, ref) => {
   return (
-    <FormControlLabel
-      control={<InputSwitch {...rest} ref={ref} />}
-      label=""
-    />
+    <InputSwitch {...rest} ref={ref} />
   )
 })

@@ -1,4 +1,4 @@
-import { Box, Grid, Paper } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import { Error } from '../components/Error'
 import { SearchField } from '../components/SearchField'
 import {

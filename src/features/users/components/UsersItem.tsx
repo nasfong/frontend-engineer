@@ -17,7 +17,7 @@ import { UserItemProps } from './users.type'
 export const UsersItem = ({ user }: UserItemProps) => {
   return (
     <Grid item xs={12} sm={6} md={4} xl={3}>
-      <Card sx={{ boxShadow: 5, borderRadius: 3 }}>
+      <Card sx={{ boxShadow: 5, '&:hover': { boxShadow: 10 }, borderRadius: 3 }}>
         <CardContent sx={{ display: 'flex', justifyContent: 'start', padding: 1, columnGap: 2 }}>
           <Paper elevation={3}>
             <CardMedia

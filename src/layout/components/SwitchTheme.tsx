@@ -11,12 +11,11 @@ export function SwitchTheme() {
   useLayoutEffect(() => {
     dispatch({ type: 'mode', payload: mode })
   }, [mode])
-
   const handleMode = useCallback(() => {
     setMode(mode === 'dark' ? 'light' : 'dark')
   }, [mode])
-
-
+  
+  
   return (
     <SwitchModeInput onChange={handleMode} checked={mode === 'light' ? false : true} />
   )
