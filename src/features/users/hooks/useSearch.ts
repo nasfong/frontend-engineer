@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
-import { UsersProps } from '../components/users.type'
+import { UsersType } from '../components/users.type'
 
-export function useSearch(data?: UsersProps[]) {
+export function useSearch(data?: UsersType[]) {
   const [search, setSearch] = useState<string>('')
 
   const handleFilter = useMemo(
