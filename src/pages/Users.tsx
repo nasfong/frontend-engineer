@@ -4,7 +4,7 @@ import { SearchField } from '../components/SearchField'
 import {
   UsersLoading as Loading,
   UsersItem as Item,
-  UsersProps,
+  UsersType,
   useSearch
 } from '../features/users'
 import { useFetch } from '../hooks/useFetch'
@@ -13,7 +13,7 @@ const page_api = '/users'
 
 function Users() {
 
-  const { data, loading, error } = useFetch<UsersProps[]>(page_api)
+  const { data, loading, error } = useFetch<UsersType[]>(page_api)
   const [search, setSearch] = useSearch(data)
 
   if (error) return <Error msg={error.message} />

@@ -4,7 +4,7 @@ import {
   ProfileLoading as Loading,
   ProfileItem as Item,
   ProfileModal as Modal,
-  ProfileProps,
+  ProfileType,
 } from '../features/profile'
 import { useFollow } from '../features/profile/hooks/useFollow'
 import { useFetch } from '../hooks/useFetch'
@@ -13,7 +13,7 @@ const page_api = '/users'
 
 function Profile() {
   const { id } = useParams()
-  const { data, loading, error } = useFetch<ProfileProps>(page_api, id)
+  const { data, loading, error } = useFetch<ProfileType>(page_api, id)
 
   const { handleFollow, ...rest } = useFollow()
 

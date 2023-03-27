@@ -1,5 +1,5 @@
 //All User
-export type UsersProps = {
+export type UsersType = {
   avatar_url: string
   events_url: string
   followers_url: string
@@ -21,6 +21,6 @@ export type UsersProps = {
 }
 
 export type UserItemProps = {
-  user: UsersProps
+  user: UsersType
 }
 

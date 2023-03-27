@@ -6,6 +6,7 @@ export function setupAxios(axios: Axios): void {
   axios.defaults.baseURL = import.meta.env.VITE_REACT_API
   axios.defaults.headers.post['Content-Type'] = 'application/json'
   axios.defaults.headers.post['Accept'] = 'application/json'
+  // axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9maWxlSW1hZ2UiOiIvdXBsb2Fkcy9hZG1pbi5wbmciLCJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI2M2QzNGMzMjhjNDExMDE0MTMyMDAxMWQiLCJmaXJzdG5hbWUiOiJBZG1pbiIsImxhc3RuYW1lIjoiYm9zcyIsInJvbGUiOiI2M2JjMGEyYmViNWQwNTdlMTk4MzJkZjEiLCJpYXQiOjE2Nzk3MTQzMzQsImV4cCI6MTY3OTcxNzkzNH0.iItlKEMJO7egcqxfWpC_9VjuDPEm6mSv94k9rIy1MBo`;
 }
 
 export const config = {

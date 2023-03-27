@@ -5,6 +5,7 @@ import MainLayout from '../layout/MainLayout'
 
 const Users = lazy(() => import('../pages/Users'))
 const Profile = lazy(() => import('../pages/Profile'))
+const TodoList = lazy(() => import('../pages/TodoList'))
 
 const MainRoutes: RouteObject = {
   path: '/',
@@ -17,6 +18,10 @@ const MainRoutes: RouteObject = {
     {
       path: ':id',
       element: <Profile />
+    },
+    {
+      path: 'todo',
+      element: <TodoList />
     },
 
     //Error

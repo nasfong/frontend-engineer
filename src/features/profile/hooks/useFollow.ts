@@ -1,19 +1,19 @@
 import axios, { Canceler } from 'axios'
 import { MutableRefObject, RefObject, useCallback, useReducer, useRef, useState } from 'react'
-import { FollowProps, UseFollowProps } from '../components/profile.type'
+import { FollowType, UseFollowProps } from '../components/profile.type'
 
 type State = {
   page: number
   url: URL | string,
   showModal: boolean
-  follows: FollowProps[]
+  follows: FollowType[]
   loading: boolean
   error?: Error,
 }
 
 type Action =
   | { type: 'open', payload: URL | string }
-  | { type: 'fetched'; payload: FollowProps[] }
+  | { type: 'fetched'; payload: FollowType[] }
   | { type: 'error'; payload: Error }
   | { type: 'stop' }
   | { type: 'finally' }
@@ -96,7 +96,7 @@ export const useFollow = (): UseFollowProps => {
 
   const handleClose = useCallback(() => dispatch({ type: 'close' }), [])
 
-  const pageRef = useCallback((node: Element) => {
+  const pageRef = useCallback((node: HTMLElement) => {
     if (loading) return
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(async (entries) => {
@@ -105,7 +105,7 @@ export const useFollow = (): UseFollowProps => {
       }
     })
     if (node) observer.current?.observe(node)
-  }, [url, page])
+  }, [loading, url, page])
 
   return {
     showModal,

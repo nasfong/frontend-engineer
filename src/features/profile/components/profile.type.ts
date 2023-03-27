@@ -1,4 +1,4 @@
-export type ProfileProps = {
+export type ProfileType = {
   id: number
   avatar_url: string
   blog?: string
@@ -15,15 +15,15 @@ export type ProfileProps = {
   following_url: URL
 }
 
-export type FollowProps = ProfileProps
+export type FollowType = ProfileType
 
 export type ModalProfileProps = {
   showModal: boolean
-  follows: FollowProps[]
+  follows: FollowType[]
   loading: boolean
   error?: Error
   handleClose: () => void
-  pageRef: (node: Element) => void
+  pageRef: (node: HTMLElement) => void
 }
 
 export type UseFollowProps = ModalProfileProps & {

@@ -9,10 +9,10 @@ import {
 } from '@mui/icons-material'
 import { Box, Card, CardMedia, Typography, Link, useTheme, Button, Paper } from '@mui/material'
 import { TypoCustom } from '../../../components/TypoCustom'
-import { ProfileProps } from './profile.type'
+import { ProfileType } from './profile.type'
 
 type ProfileItemProps = {
-  user?: ProfileProps
+  user?: ProfileType
   handleFollow: (url?: URL | string) => void
 }
 

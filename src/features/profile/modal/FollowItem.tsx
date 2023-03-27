@@ -1,13 +1,12 @@
-import { CardMedia, Link, Paper, Typography } from '@mui/material'
-import { LegacyRef } from 'react'
-import { FollowProps } from '../components/profile.type'
+import { CardMedia, Link, LinkBaseProps, Paper, Typography } from '@mui/material'
+import { FollowType } from '../components/profile.type'
 
-type FollowItem = {
-  follow: FollowProps
-  pageRef?: (node: Element | any) => void
+type FollowItemProps = {
+  follow: FollowType
+  pageRef?: (node: HTMLElement & Omit<LinkBaseProps, "a">) => void
 }
 
-export const FollowItem = ({ follow, pageRef }: FollowItem) => {
+export const FollowItem = ({ follow, pageRef }: FollowItemProps) => {
   return (
     <Link
       href={`/${follow.login}`}
