@@ -5,7 +5,7 @@ _Material ui
 _React (vite)
 _Data loader (api)
 
-#HOW TO START (make sure you already have node.js ,npm or yarn)
+#HOW TO START (make sure you already have node.js(version 16 aleast ,npm or yarn)
 
 
 1.npm install
